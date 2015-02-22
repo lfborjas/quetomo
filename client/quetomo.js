@@ -15,6 +15,26 @@ Template.search_results.events({
     $("#query").val(newQuery);
     Session.set('searchQuery', newQuery);
   }
+  ,'click .upvote': function(){
+    var upvotes = Session.get('upvotes');
+    var id = $(event.target).data("id")
+    if(!upvotes) upvotes = [];
+    if(id && upvotes.indexOf(id) == -1){
+      Medications.update(id, {$inc: {positive_votes: 1}});
+      upvotes.push(id)
+      Session.set('upvotes', upvotes );
+    }
+  }
+  ,'click .downvote': function(){
+    var downvotes = Session.get('downvotes');
+    var id = $(event.target).data("id")
+    if(!downvotes) downvotes = [];
+    if(id && downvotes.indexOf(id) == -1){
+      Medications.update(id, {$inc: {negative_votes: 1}});
+      downvotes.push(id)
+      Session.set('downvotes', downvotes );
+    }
+  }
 });
 
 

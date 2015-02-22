@@ -14,7 +14,7 @@
 <template name="landing">
     <div class="jumbotron">
       <h1>Qué Tomo?</h1>
-      <p>Aprendé más sobre síntomas comunes o medicamentos.</p>
+      <p>Aprendé más sobre medicamentos.</p>
       <form class="form-inline">
         <div class="form-group">
           <input type="text" style="width: 441px;" class="form-control" id="query" placeholder="buscá un síntoma, ingrediente o medicamento">
@@ -67,7 +67,19 @@
   {{#if searchResults.count}}
     {{#each searchResults}}
     <div class="panel panel-default">
-      <div class="panel-heading"><strong>{{name}}</strong></div>
+      <div class="panel-heading">
+         <strong>{{name}}</strong>
+         (Es este medicamento útil? 
+         <button type="button" class="upvote btn btn-default btn-xs" data-id="{{_id}}">
+           <span class="upvote glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 
+           <span class="upvote badge">{{positive_votes}}</span>
+         </button>
+         <button type="button" class="downvote btn btn-default btn-xs" data-id="{{_id}}">
+           <span class="downvote glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> 
+           <span class="downvote badge">{{negative_votes}}</span>
+         </button>
+         )
+      </div>
       <div class="panel-body">
         <dl class="dl-horizontal">
           <dt>Síntomas que alivia: </dt>
