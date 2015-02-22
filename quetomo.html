@@ -14,15 +14,16 @@
       <p>Aprendé más sobre síntomas comunes o medicamentos.</p>
       <form class="form-inline">
         <div class="form-group">
-          <input type="text" style="width: 441px;" class="form-control" id="query" placeholder="buscá un síntoma o medicamento">
+          <input type="text" style="width: 441px;" class="form-control" id="query" placeholder="buscá un síntoma, ingrediente o medicamento">
         </div>
         <button type="submit" class="btn btn-primary">Buscar</button>
       </form>
+      <a class="add_medication" href="#add-medication">O agregá un nuevo medicamento</a>
     </div> 
 </template>
 
 <template name="add_medication">
-  <div id="add_medication">
+  <div id="add_medication" style="display: none;">
     <h2>Registrar un nuevo medicamento</h2>
     <form class="form-horizontal">
       <div class="form-group">
@@ -52,6 +53,7 @@
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" class="btn btn-success">Agregar</button>
+          <button id="cancel_add_medication" type="button" class="btn btn-danger">Cancelar</button>
         </div>
       </div>
     </form>   
