@@ -66,10 +66,10 @@
 <template name="search_results">
   {{#if searchResults.count}}
     {{#each searchResults}}
-    <div class="panel panel-default">
+    <div class="panel panel-info">
       <div class="panel-heading">
          <strong>{{name}}</strong>
-         (Es este medicamento útil? 
+         (Vale la pena este medicamento? 
          <button type="button" class="upvote btn btn-default btn-xs" data-id="{{_id}}">
            <span class="upvote glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 
            <span class="upvote badge">{{positive_votes}}</span>
@@ -103,8 +103,34 @@
             {{warnings}}
           </dd>
         </dl>
+        <a class="toggle-comments" href="#comments">Comentarios <span class="badge">{{comments.length}}</span></a>
+        <div class="well comment-list">
+          {{#each comments}}
+            {{>comment}}
+          {{/each}}
+          {{>add_comment}}
+        </div>
       </div>
     </div> 
     {{/each}}
   {{/if}}
+</template>
+
+<template name="comment">
+  <dt>{{commenter}}</dt>
+  <dd>{{content}}</dd>
+</template>
+
+<template name="add_comment">
+  <form class="add_comment" data-id="{{_id}}">
+  <div class="form-group">
+    <label for="commenter">Nombre</label>
+    <input type="text" class="form-control" id="commenter" placeholder="Tu nombre">
+  </div>
+  <div class="form-group">
+    <label for="content">Contenido</label>
+    <textarea class="form-control" rows="3" id="content" placeholder="Cuál es tu experiencia con este medicamento?"></textarea>
+  </div>
+  <button type="submit" class="btn btn-default">Agregar</button>
+</form> 
 </template>

@@ -9,8 +9,24 @@ Template.search_results.helpers ({
  } 
 });
 
+Template.add_comment.events({
+  'submit form': function(){
+    var form = $(event.target);
+    var data = {
+      'commenter': form.find("#commenter").val(),
+      'content': form.find("#content").val()
+    };
+    Medications.update(form.data("id"), {$push: {comments: data}});
+    return false;
+  }
+});
+
 Template.search_results.events({
-  'click .data-label': function(){
+  'click .toggle-comments': function(){
+    $(event.target).siblings(".comment-list").toggle();
+    return false;
+  }
+  ,'click .data-label': function(){
     var newQuery = $(event.target).text();
     $("#query").val(newQuery);
     Session.set('searchQuery', newQuery);
