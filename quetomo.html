@@ -103,11 +103,13 @@
             {{warnings}}
           </dd>
         </dl>
-        <a class="toggle-comments" href="#comments">Comentarios <span class="badge">{{comments.length}}</span></a>
-        <div class="well comment-list">
-          {{#each comments}}
-            {{>comment}}
-          {{/each}}
+          <a class="toggle-comments" href="#comments">Comentarios <span class="badge">{{comments.length}}</span></a>
+        <div class="panel panel-default comment-list" style="display: none;">
+          <dl>
+            {{#each comments}}
+              {{>comment}}
+            {{/each}}
+          </dl>
           {{>add_comment}}
         </div>
       </div>
@@ -122,15 +124,17 @@
 </template>
 
 <template name="add_comment">
-  <form class="add_comment" data-id="{{_id}}">
-  <div class="form-group">
-    <label for="commenter">Nombre</label>
-    <input type="text" class="form-control" id="commenter" placeholder="Tu nombre">
+  <div class="well"> 
+    <form class="add_comment" data-id="{{_id}}">
+      <div class="form-group">
+        <label for="commenter">Nombre</label>
+        <input type="text" class="form-control" id="commenter" placeholder="Tu nombre">
+      </div>
+      <div class="form-group">
+        <label for="content">Contenido</label>
+        <textarea class="form-control" rows="3" id="content" placeholder="Cuál es tu experiencia con este medicamento?"></textarea>
+      </div>
+      <button type="submit" class="btn btn-default">Agregar</button>
+    </form> 
   </div>
-  <div class="form-group">
-    <label for="content">Contenido</label>
-    <textarea class="form-control" rows="3" id="content" placeholder="Cuál es tu experiencia con este medicamento?"></textarea>
-  </div>
-  <button type="submit" class="btn btn-default">Agregar</button>
-</form> 
 </template>

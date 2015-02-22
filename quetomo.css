@@ -2,3 +2,15 @@
 .data-label{
   cursor: pointer; 
 }
+
+.container-fluid{
+  max-width: 85%;
+}
+
+.comment-list{
+  padding: 2%;
+}
+
+.comment-list .well{
+  margin: 2%;
+}
