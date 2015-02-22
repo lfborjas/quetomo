@@ -4,9 +4,11 @@
 </head>
 
 <body>
+  <div class="container-fluid">
   {{> landing}}
   {{> add_medication}}
   {{> search_results}}
+  </div>
 </body>
 
 <template name="landing">
@@ -63,10 +65,34 @@
 
 <template name="search_results">
   {{#if searchResults.count}}
-    <ul>
     {{#each searchResults}}
-      <li>{{name}}</li>
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>{{name}}</strong></div>
+      <div class="panel-body">
+        <dl class="dl-horizontal">
+          <dt>Síntomas que alivia: </dt>
+          <dd>
+            <ul class='list-unstyled'>
+            {{#each symptoms}}
+              <li class="symptom label label-warning">{{this}}</li>
+            {{/each}}
+            </ul>
+          </dd>
+          <dt>Ingredientes: </dt>
+          <dd>
+            <ul class='list-unstyled'>
+            {{#each ingredients}}
+              <li class="ingredient label label-success">{{this}}</li>
+            {{/each}}
+            </ul>
+          </dd>
+          <dt>Precauciones: </dt>
+          <dd>
+            {{warnings}}
+          </dd>
+        </dl>
+      </div>
+    </div> 
     {{/each}}
-    </ul>
   {{/if}}
 </template>
