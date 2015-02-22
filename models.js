@@ -6,8 +6,8 @@ Medications.search = function(query){
       {name: { $regex: RegExp(query), $options: 'i' }},
       {'ingredients': {$regex: RegExp(query), $options: 'i'} },
       {'symptoms': {$regex: RegExp(query), $options: 'i'} },
-    ]     
-  });
+    ],
+  }, {sort: {positive_votes: -1, negative_votes: 1}});
 }
 
 if(Meteor.isServer){
