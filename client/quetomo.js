@@ -17,6 +17,7 @@ Template.add_comment.events({
       'content': form.find("#content").val()
     };
     Medications.update(form.data("id"), {$push: {comments: data}});
+    form.find(':input').not(":submit, :button").val('');
     return false;
   }
 });
@@ -61,6 +62,7 @@ Template.landing.events({
   ,'submit form': function(){
     var query = $(event.target).find("#query");
     Session.set('searchQuery', query.val());
+    $(event.target).find(':input').not(":submit, :button").val('');
     return false;
   }
 });
