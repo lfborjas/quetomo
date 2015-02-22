@@ -6,6 +6,7 @@
 <body>
   {{> landing}}
   {{> add_medication}}
+  {{> search_results}}
 </body>
 
 <template name="landing">
@@ -58,4 +59,14 @@
       </div>
     </form>   
   </div>
+</template>
+
+<template name="search_results">
+  {{#if searchResults.count}}
+    <ul>
+    {{#each searchResults}}
+      <li>{{name}}</li>
+    {{/each}}
+    </ul>
+  {{/if}}
 </template>

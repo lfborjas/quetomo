@@ -1,7 +1,23 @@
+Tracker.autorun(function() {  
+  if (Session.get('searchQuery'))
+    Meteor.subscribe('searchResults', Session.get('searchQuery'));
+});
+
+Template.search_results.helpers ({
+ 'searchResults': function(){
+   return Medications.search(Session.get('searchQuery'));
+ } 
+});
+
 Template.landing.events({
   'click a.add_medication': function(){
     $("#add_medication").show();
   } 
+  ,'submit form': function(){
+    var query = $(event.target).find("#query");
+    Session.set('searchQuery', query.val());
+    return false;
+  }
 });
 
 Template.add_medication.events({
