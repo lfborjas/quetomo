@@ -4,8 +4,8 @@ Medications.search = function(query){
   return Medications.find({
     $or: [
       {name: { $regex: RegExp(query), $options: 'i' }},
-      {'ingredients': query},
-      {'symptoms': query},
+      {'ingredients': {$regex: RegExp(query), $options: 'i'} },
+      {'symptoms': {$regex: RegExp(query), $options: 'i'} },
     ]     
   });
 }
