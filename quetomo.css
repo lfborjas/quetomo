@@ -1,1 +1,4 @@
 /* CSS declarations go here */
+.data-label{
+  cursor: pointer; 
+}

@@ -9,6 +9,15 @@ Template.search_results.helpers ({
  } 
 });
 
+Template.search_results.events({
+  'click .data-label': function(){
+    var newQuery = $(event.target).text();
+    $("#query").val(newQuery);
+    Session.set('searchQuery', newQuery);
+  }
+});
+
+
 Template.landing.events({
   'click a.add_medication': function(){
     $("#add_medication").show();
